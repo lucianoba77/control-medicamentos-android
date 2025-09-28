@@ -130,4 +130,18 @@
     <string name="validation_stock_required">El stock inicial es requerido</string>
     <string name="medicine_saved_success">Medicamento guardado exitosamente</string>
 
+    <!-- Historial -->
+    <string name="historial_title">Historial</string>
+    <string name="statistics_title">Estadísticas Generales</string>
+    <string name="loading_statistics">Cargando estadísticas...</string>
+    <string name="adherence_chart_title">Adherencia por Medicamento</string>
+    <string name="completed_treatments_title">Tratamientos Concluidos</string>
+    <string name="treatment_start_date">Fecha de inicio</string>
+    <string name="treatment_end_date">Fecha de fin</string>
+    <string name="treatment_duration">Duración del tratamiento</string>
+    <string name="adherence_general">Adherencia General</string>
+    <string name="active_treatments">Tratamientos Activos</string>
+    <string name="completed_treatments">Tratamientos Concluidos</string>
+    <string name="adherence_percentage">%.1f%%</string>
+
 </resources>
