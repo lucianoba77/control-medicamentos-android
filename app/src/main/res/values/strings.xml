@@ -1,3 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Control Medicamentos</string>
+
+    <!-- Login -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="login_email_hint">Correo electrónico</string>
+    <string name="login_password_hint">Contraseña</string>
+    <string name="login_button">Iniciar Sesión</string>
+    <string name="register_button">Crear Cuenta</string>
+    <string name="login_help_text">¿Necesitas ayuda? Contacta con tu familiar responsable</string>
+
+    <!-- Main Activity -->
+    <string name="main_title">Mis Medicamentos</string>
+    <string name="main_no_medicines">No tienes medicamentos registrados</string>
+    <string name="main_add_first_medicine">Agregar mi primer medicamento</string>
+
+    <!-- Navigation -->
+    <string name="nav_new_medicine">Nueva\nMedicina</string>
+    <string name="nav_medicine_cabinet">Botiquín</string>
+    <string name="nav_history">Historial</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <!-- Medicine Item -->
+    <string name="medicine_taken">Tomado</string>
+    <string name="medicine_stock">Stock:</string>
+    <string name="medicine_today_doses">Tomas de hoy:</string>
+    <string name="medicine_next_dose">Próxima:</string>
+    <string name="medicine_all_completed">Todas las tomas completadas</string>
+    <string name="medicine_no_scheduled">Sin tomas programadas</string>
+
+    <!-- Medicine Types -->
+    <string name="medicine_type_pills">Comprimidos</string>
+    <string name="medicine_type_syrup">Jarabe</string>
+    <string name="medicine_type_cream">Crema</string>
+    <string name="medicine_type_spray">Spray nasal</string>
+    <string name="medicine_type_injection">Inyección</string>
+    <string name="medicine_type_drops">Gotas</string>
+    <string name="medicine_type_patch">Parche</string>
+
+    <!-- Messages -->
+    <string name="msg_medicine_taken">✓ %1$s marcado como tomado</string>
+    <string name="msg_treatment_completed">¡Tratamiento de %1$s completado!</string>
+    <string name="msg_stock_low">Stock bajo: %1$s</string>
+    <string name="msg_medicine_expired">Medicamento vencido: %1$s</string>
+
+    <!-- Buttons -->
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="btn_edit">Editar</string>
+    <string name="btn_add_stock">Agregar Stock</string>
+    <string name="btn_pause">Pausar</string>
+    <string name="btn_resume">Reanudar</string>
+
+    <!-- Form Fields -->
+    <string name="field_medicine_name">Nombre del medicamento</string>
+    <string name="field_presentation">Presentación</string>
+    <string name="field_daily_doses">Tomas diarias</string>
+    <string name="field_first_dose_time">Hora primera toma</string>
+    <string name="field_condition">Afección que trata</string>
+    <string name="field_initial_stock">Stock inicial</string>
+    <string name="field_treatment_days">Días de tratamiento</string>
+    <string name="field_details">Detalles adicionales</string>
+    <string name="field_expiration_date">Fecha de vencimiento</string>
+
+    <!-- Validation Messages -->
+    <string name="error_field_required">Este campo es obligatorio</string>
+    <string name="error_invalid_email">Ingresa un correo válido</string>
+    <string name="error_invalid_number">Ingresa un número válido</string>
+    <string name="error_invalid_date">Ingresa una fecha válida</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_notifications">Notificaciones</string>
+    <string name="settings_alarm_tone">Tono de alarma</string>
+    <string name="settings_repeat_frequency">Frecuencia de repetición</string>
+    <string name="settings_low_stock_days">Días antes de aviso de stock bajo</string>
+    <string name="settings_user_data">Datos del usuario</string>
+
+    <!-- History -->
+    <string name="history_title">Historial</string>
+    <string name="history_adherence">Adherencia al tratamiento</string>
+    <string name="history_completed_treatments">Tratamientos completados</string>
+    <string name="history_statistics">Estadísticas</string>
+
+    <!-- Botiquín -->
+    <string name="botiquin_title">Mi Botiquín</string>
+    <string name="btn_back">← Volver</string>
+    <string name="btn_edit">Editar</string>
+    <string name="btn_delete">Eliminar</string>
+    <string name="btn_add_stock">+ Stock</string>
+    <string name="btn_pause">Pausar</string>
+    <string name="btn_resume">Reanudar</string>
+    <string name="medicine_expired">Vencido</string>
+    <string name="medicine_paused">Pausado</string>
+    <string name="stock_low">Stock Bajo</string>
+    <string name="stock_ok">Stock OK</string>
+    <string name="delete_medicine_title">Eliminar Medicamento</string>
+    <string name="delete_medicine_message">¿Estás seguro de que quieres eliminar %s?</string>
+    <string name="btn_confirm">Confirmar</string>
+    <string name="btn_cancel">Cancelar</string>
+
+    <!-- Íconos y descripciones -->
+    <string name="medicine_icon">Ícono del medicamento</string>
+    <string name="medicine_name">Nombre del medicamento</string>
+    <string name="medicine_presentation">Presentación</string>
+    <string name="medicine_stock">Stock</string>
+    <string name="medicine_status">Estado</string>
 </resources>

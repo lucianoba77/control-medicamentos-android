@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+
+    <!-- Paddings -->
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_xlarge">18sp</dimen>
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_header">24sp</dimen>
+
+    <!-- Button Heights -->
+    <dimen name="button_height_small">40dp</dimen>
+    <dimen name="button_height_medium">48dp</dimen>
+    <dimen name="button_height_large">56dp</dimen>
+
+    <!-- Card Dimensions -->
+    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+
+    <!-- Medicine Item Dimensions -->
+    <dimen name="medicine_item_height">80dp</dimen>
+    <dimen name="medicine_icon_size">48dp</dimen>
+    <dimen name="progress_bar_height">8dp</dimen>
+
+    <!-- Navigation Dimensions -->
+    <dimen name="nav_button_size">64dp</dimen>
+    <dimen name="nav_button_margin">16dp</dimen>
+
+    <!-- Form Dimensions -->
+    <dimen name="edit_text_height">48dp</dimen>
+    <dimen name="form_field_margin">16dp</dimen>
+
+    <!-- Dialog Dimensions -->
+    <dimen name="dialog_corner_radius">12dp</dimen>
+    <dimen name="dialog_margin">24dp</dimen>
+</resources>

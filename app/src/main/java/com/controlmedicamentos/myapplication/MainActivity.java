@@ -13,6 +13,7 @@ import com.controlmedicamentos.myapplication.models.Medicamento;
 import java.util.ArrayList;
 import java.util.List;
 import com.controlmedicamentos.myapplication.utils.DatosPrueba;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity implements MedicamentoAdapter.OnMedicamentoClickListener {
 
@@ -67,41 +68,38 @@ public class MainActivity extends AppCompatActivity implements MedicamentoAdapte
         btnNuevaMedicina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implementar NuevaMedicinaActivity
-                Toast.makeText(MainActivity.this, "Nueva Medicina - En desarrollo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, NuevaMedicinaActivity.class);
+                startActivity(intent);
             }
         });
 
         btnBotiquin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implementar BotiquinActivity
-                Toast.makeText(MainActivity.this, "Botiquín - En desarrollo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, BotiquinActivity.class);
+                startActivity(intent);
             }
         });
 
         btnHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implementar HistorialActivity
-                Toast.makeText(MainActivity.this, "Historial - En desarrollo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, HistorialActivity.class);
+                startActivity(intent);
             }
         });
 
         btnAjustes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implementar AjustesActivity
-                Toast.makeText(MainActivity.this, "Ajustes - En desarrollo", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, AjustesActivity.class);
+                startActivity(intent);
             }
         });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Volver a LoginActivity
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
