@@ -1,19 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:background="@color/background">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- Header con título -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_large"
+        android:background="@color/primary"
+        android:gravity="center_vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/main_title"
+            android:textSize="@dimen/text_size_header"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salir"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/error"
+            style="@style/Widget.Material3.Button.TextButton" />
+
+    </LinearLayout>
+
+    <!-- Lista de medicamentos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMedicamentos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="@dimen/padding_medium"
+        android:clipToPadding="false" />
+
+    <!-- Botones de navegación -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_medium"
+        android:background="@color/surface"
+        android:elevation="8dp">
+
+        <!-- Botón Nueva Medicina -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNuevaMedicina"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_large"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:text="@string/nav_new_medicine"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/medicamento_azul"
+            android:drawableTop="@android:drawable/ic_input_add"
+            android:drawablePadding="@dimen/padding_small"
+            style="@style/NavigationButton" />
+
+        <!-- Botón Botiquín -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBotiquin"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_large"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:text="@string/nav_medicine_cabinet"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/medicamento_verde"
+            android:drawableTop="@android:drawable/ic_menu_manage"
+            android:drawablePadding="@dimen/padding_small"
+            style="@style/NavigationButton" />
+
+        <!-- Botón Historial -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnHistorial"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_large"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:text="@string/nav_history"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/medicamento_naranja"
+            android:drawableTop="@android:drawable/ic_menu_recent_history"
+            android:drawablePadding="@dimen/padding_small"
+            style="@style/NavigationButton" />
+
+        <!-- Botón Ajustes -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAjustes"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_large"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/margin_small"
+            android:text="@string/nav_settings"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/medicamento_morado"
+            android:drawableTop="@android:drawable/ic_menu_preferences"
+            android:drawablePadding="@dimen/padding_small"
+            style="@style/NavigationButton" />
+
+    </LinearLayout>
+
+</LinearLayout>
