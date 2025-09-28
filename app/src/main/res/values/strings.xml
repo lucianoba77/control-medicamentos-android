@@ -144,4 +144,33 @@
     <string name="completed_treatments">Tratamientos Concluidos</string>
     <string name="adherence_percentage">%.1f%%</string>
 
+    <!-- Ajustes -->
+    <string name="ajustes_title">Ajustes</string>
+    <string name="user_data_title">Datos del Usuario</string>
+    <string name="notifications_title">Configuración de Notificaciones</string>
+    <string name="stock_settings_title">Configuración de Stock</string>
+    <string name="field_name">Nombre</string>
+    <string name="field_email">Email</string>
+    <string name="field_phone">Teléfono</string>
+    <string name="field_age">Edad</string>
+    <string name="enable_notifications">Habilitar notificaciones</string>
+    <string name="enable_vibration">Habilitar vibración</string>
+    <string name="enable_sound">Habilitar sonido</string>
+    <string name="volume_level">Nivel de volumen</string>
+    <string name="repetitions_count">Número de repeticiones</string>
+    <string name="days_before_low_stock">Días antes de notificar stock bajo</string>
+    <string name="btn_configure_days">Configurar días</string>
+    <string name="btn_reset_data">Resetear Datos</string>
+    <string name="configuration_saved">Configuración guardada</string>
+    <string name="data_reset">Datos reseteados</string>
+    <string name="reset_data_title">Resetear Datos</string>
+    <string name="reset_data_message">¿Estás seguro de que quieres resetear todos los datos? Esta acción no se puede deshacer.</string>
+    <string name="days_antelacion_title">Días de antelación para stock bajo</string>
+    <string name="day_1">1 día</string>
+    <string name="day_2">2 días</string>
+    <string name="day_3">3 días</string>
+    <string name="day_5">5 días</string>
+    <string name="day_7">7 días</string>
+
+    
 </resources>
