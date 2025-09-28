@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_large"
+    android:background="@color/background"
+    android:gravity="center">
+
+    <!-- Logo o título -->
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="@dimen/margin_xlarge"
+        android:layout_marginBottom="@dimen/margin_xlarge"
+        android:src="@mipmap/ic_launcher"
+        android:contentDescription="@string/app_name" />
+
+    <!-- Título -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_title"
+        android:textSize="@dimen/text_size_header"
+        android:textColor="@color/primary"
+        android:layout_marginBottom="@dimen/margin_xlarge"
+        android:fontFamily="sans-serif-medium" />
+
+    <!-- Card para el formulario -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardBackgroundColor="@color/surface">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_large">
+
+            <!-- Campo Email -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:hint="@string/login_email_hint"
+                app:boxStrokeColor="@color/primary"
+                app:hintTextColor="@color/primary"
+                style="@style/FormField">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textSize="@dimen/text_size_large"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Contraseña -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:hint="@string/login_password_hint"
+                app:boxStrokeColor="@color/primary"
+                app:hintTextColor="@color/primary"
+                app:passwordToggleEnabled="true"
+                style="@style/FormField">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/text_size_large"
+                    android:textColor="@color/black" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botón Login -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_large"
+                android:text="@string/login_button"
+                android:textSize="@dimen/text_size_large"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/primary"
+                android:layout_marginBottom="@dimen/margin_medium"
+                style="@style/MedicineButton" />
+
+            <!-- Botón Registro -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_large"
+                android:text="@string/register_button"
+                android:textSize="@dimen/text_size_large"
+                android:textColor="@color/primary"
+                android:backgroundTint="@color/white"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="2dp"
+                style="@style/MedicineButton" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Texto de ayuda -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_help_text"
+        android:textSize="@dimen/text_size_medium"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="@dimen/margin_large"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp" />
+
+</LinearLayout>
