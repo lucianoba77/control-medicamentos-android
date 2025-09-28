@@ -21,14 +21,30 @@ public class Medicamento {
     private List<String> horariosTomas; // lista de horarios de todas las tomas
     private int iconoPresentacion; // ícono según la presentación
 
-    // Constructor por defecto
+    // Nuevas propiedades para gestión avanzada
+    private Date fechaVencimiento; // fecha de caducidad
+    private Date fechaInicioTratamiento; // cuando comenzó el tratamiento
+    private TipoStock tipoStock; // tipo de gestión de stock
+    private int diasEstimadosDuracion; // días estimados de duración
+    private int diasRestantesDuracion; // días restantes de duración
+    private boolean pausado; // si está pausado (tratamiento completado pero no eliminado)
+
+    // Enum para tipos de stock
+    public enum TipoStock {
+        UNIDADES_CONTABLES,    // Comprimidos, cápsulas (se puede contar exactamente)
+        UNIDADES_APROXIMADAS,  // Jarabes, inyectables en frasco (estimación por días)
+        TOPICO_DIAS,          // Cremas, pomadas (solo días estimados)
+        LIQUIDO_ML            // Gotas, jarabes (por mililitros)
+    }
+
     public Medicamento() {
         this.horariosTomas = new ArrayList<>();
         this.activo = true;
-        this.iconoPresentacion = android.R.drawable.ic_menu_info_details;
+        this.pausado = false;
+        this.tipoStock = TipoStock.UNIDADES_CONTABLES;
+        this.fechaInicioTratamiento = new Date();
     }
 
-    // Constructor con parámetros
     public Medicamento(String id, String nombre, String presentacion,
                        int tomasDiarias, String horarioPrimeraToma,
                        String afeccion, int stockInicial, int color, int diasTratamiento) {
@@ -43,14 +59,51 @@ public class Medicamento {
         this.color = color;
         this.diasTratamiento = diasTratamiento;
         this.activo = true;
+        this.pausado = false;
         this.horariosTomas = new ArrayList<>();
         this.iconoPresentacion = android.R.drawable.ic_menu_info_details;
+        this.fechaInicioTratamiento = new Date();
+
+        // Asignar tipo de stock según presentación
+        asignarTipoStock();
 
         // Configurar ícono según presentación
         asignarIconoPresentacion();
 
         // Generar horarios de tomas
         generarHorariosTomas();
+    }
+
+    // Asigna tipo de stock según la presentación
+    private void asignarTipoStock() {
+        switch (presentacion.toLowerCase()) {
+            case "comprimidos":
+            case "pastillas":
+            case "cápsulas":
+                this.tipoStock = TipoStock.UNIDADES_CONTABLES;
+                break;
+            case "jarabe":
+            case "gotas":
+                this.tipoStock = TipoStock.LIQUIDO_ML;
+                break;
+            case "crema":
+            case "pomada":
+            case "gel":
+            case "ungüento":
+                this.tipoStock = TipoStock.TOPICO_DIAS;
+                break;
+            case "inyección":
+                // Para inyectables, asumimos que pueden ser contables o aproximados
+                // Se puede configurar manualmente en el botiquín
+                this.tipoStock = TipoStock.UNIDADES_APROXIMADAS;
+                break;
+            case "spray nasal":
+            case "spray":
+                this.tipoStock = TipoStock.UNIDADES_APROXIMADAS;
+                break;
+            default:
+                this.tipoStock = TipoStock.UNIDADES_APROXIMADAS;
+        }
     }
 
     // Configurar ícono según la presentación
@@ -123,6 +176,7 @@ public class Medicamento {
     public void setPresentacion(String presentacion) {
         this.presentacion = presentacion;
         asignarIconoPresentacion();
+        asignarTipoStock();
     }
 
     public int getTomasDiarias() {
@@ -215,6 +269,55 @@ public class Medicamento {
         this.iconoPresentacion = iconoPresentacion;
     }
 
+    // Nuevos getters y setters
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public Date getFechaInicioTratamiento() {
+        return fechaInicioTratamiento;
+    }
+
+    public void setFechaInicioTratamiento(Date fechaInicioTratamiento) {
+        this.fechaInicioTratamiento = fechaInicioTratamiento;
+    }
+
+    public TipoStock getTipoStock() {
+        return tipoStock;
+    }
+
+    public void setTipoStock(TipoStock tipoStock) {
+        this.tipoStock = tipoStock;
+    }
+
+    public int getDiasEstimadosDuracion() {
+        return diasEstimadosDuracion;
+    }
+
+    public void setDiasEstimadosDuracion(int diasEstimadosDuracion) {
+        this.diasEstimadosDuracion = diasEstimadosDuracion;
+    }
+
+    public int getDiasRestantesDuracion() {
+        return diasRestantesDuracion;
+    }
+
+    public void setDiasRestantesDuracion(int diasRestantesDuracion) {
+        this.diasRestantesDuracion = diasRestantesDuracion;
+    }
+
+    public boolean isPausado() {
+        return pausado;
+    }
+
+    public void setPausado(boolean pausado) {
+        this.pausado = pausado;
+    }
+
     // Métodos útiles
     public boolean esCronico() {
         return diasTratamiento == -1;
@@ -230,8 +333,18 @@ public class Medicamento {
     }
 
     public int getPorcentajeStock() {
-        if (stockInicial <= 0) return 0;
-        return (stockActual * 100) / stockInicial;
+        switch (tipoStock) {
+            case UNIDADES_CONTABLES:
+                if (stockInicial <= 0) return 0;
+                return (stockActual * 100) / stockInicial;
+            case UNIDADES_APROXIMADAS:
+            case TOPICO_DIAS:
+            case LIQUIDO_ML:
+                if (diasEstimadosDuracion <= 0) return 0;
+                return (diasRestantesDuracion * 100) / diasEstimadosDuracion;
+            default:
+                return 0;
+        }
     }
 
     public boolean necesitaReposicion() {
@@ -239,16 +352,117 @@ public class Medicamento {
     }
 
     public void consumirDosis() {
-        if (stockActual > 0) {
-            stockActual--;
+        switch (tipoStock) {
+            case UNIDADES_CONTABLES:
+                if (stockActual > 0) {
+                    stockActual--;
+                }
+                break;
+            case UNIDADES_APROXIMADAS:
+            case TOPICO_DIAS:
+            case LIQUIDO_ML:
+                if (diasRestantesDuracion > 0) {
+                    diasRestantesDuracion--;
+                }
+                break;
         }
     }
 
     public void agregarStock(int cantidad) {
-        stockActual += cantidad;
+        switch (tipoStock) {
+            case UNIDADES_CONTABLES:
+                stockActual += cantidad;
+                break;
+            case UNIDADES_APROXIMADAS:
+            case TOPICO_DIAS:
+            case LIQUIDO_ML:
+                diasRestantesDuracion += cantidad;
+                break;
+        }
     }
 
     public boolean estaAgotado() {
-        return stockActual <= 0;
+        switch (tipoStock) {
+            case UNIDADES_CONTABLES:
+                return stockActual <= 0;
+            case UNIDADES_APROXIMADAS:
+            case TOPICO_DIAS:
+            case LIQUIDO_ML:
+                return diasRestantesDuracion <= 0;
+            default:
+                return false;
+        }
+    }
+
+    public boolean estaVencido() {
+        if (fechaVencimiento == null) {
+            return false;
+        }
+        return new Date().after(fechaVencimiento);
+    }
+
+    public boolean tieneTomasPendientes() {
+        // Lógica para verificar si tiene tomas pendientes
+        // Por ahora retornam true si está activo
+        return activo && !pausado && !estaVencido();
+    }
+
+    public void pausarMedicamento() {
+        this.pausado = true;
+        this.activo = false;
+    }
+
+    public void reanudarMedicamento() {
+        this.pausado = false;
+        this.activo = true;
+    }
+
+    public String getInfoStock() {
+        switch (tipoStock) {
+            case UNIDADES_CONTABLES:
+                return String.format("%d/%d %s", stockActual, stockInicial, presentacion.toLowerCase());
+            case UNIDADES_APROXIMADAS:
+                return String.format("%d días restantes (estimado)", diasRestantesDuracion);
+            case TOPICO_DIAS:
+                return String.format("%d/%d días restantes", diasRestantesDuracion, diasEstimadosDuracion);
+            case LIQUIDO_ML:
+                return String.format("%d días restantes (ml)", diasRestantesDuracion);
+            default:
+                return "Stock no disponible";
+        }
+    }
+
+    public String getEstadoTexto() {
+        if (estaVencido()) {
+            return "VENCIDO";
+        }
+        if (pausado) {
+            return "PAUSADO";
+        }
+        if (!activo) {
+            return "INACTIVO";
+        }
+        if (estaAgotado()) {
+            return "AGOTADO";
+        }
+        if (necesitaReposicion()) {
+            return "STOCK BAJO";
+        }
+        return "ACTIVO";
+    }
+
+    public String getUnidadStock() {
+        switch (tipoStock) {
+            case UNIDADES_CONTABLES:
+                return presentacion.toLowerCase();
+            case UNIDADES_APROXIMADAS:
+                return "días (estimado)";
+            case TOPICO_DIAS:
+                return "días";
+            case LIQUIDO_ML:
+                return "días (ml)";
+            default:
+                return "unidades";
+        }
     }
 }
