@@ -107,4 +107,27 @@
     <string name="medicine_presentation">Presentación</string>
     <string name="medicine_stock">Stock</string>
     <string name="medicine_status">Estado</string>
+
+    <!-- Nueva Medicina -->
+    <string name="nueva_medicina_title">Nueva Medicina</string>
+    <string name="field_medicine_name">Nombre del medicamento</string>
+    <string name="field_presentation">Presentación</string>
+    <string name="field_condition">Afección que trata</string>
+    <string name="field_daily_doses">Tomas diarias</string>
+    <string name="field_first_dose_time">Horario primera toma</string>
+    <string name="field_initial_stock">Stock inicial</string>
+    <string name="field_treatment_days">Días de tratamiento</string>
+    <string name="field_additional_details">Detalles adicionales</string>
+    <string name="field_medicine_color">Color del medicamento</string>
+    <string name="field_expiration_date">Fecha de vencimiento</string>
+    <string name="btn_select_color">Seleccionar Color</string>
+    <string name="btn_select_expiration_date">Seleccionar Fecha</string>
+    <string name="btn_save">Guardar</string>
+    <string name="validation_name_required">El nombre es requerido</string>
+    <string name="validation_condition_required">La afección es requerida</string>
+    <string name="validation_doses_required">Las tomas diarias son requeridas</string>
+    <string name="validation_time_required">El horario es requerido</string>
+    <string name="validation_stock_required">El stock inicial es requerido</string>
+    <string name="medicine_saved_success">Medicamento guardado exitosamente</string>
+
 </resources>

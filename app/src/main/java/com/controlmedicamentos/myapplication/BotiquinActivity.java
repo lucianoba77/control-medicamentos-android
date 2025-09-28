@@ -14,6 +14,7 @@ import com.controlmedicamentos.myapplication.adapters.BotiquinAdapter;
 import com.controlmedicamentos.myapplication.models.Medicamento;
 import com.controlmedicamentos.myapplication.utils.DatosPrueba;
 import java.util.List;
+import android.content.Intent;
 
 public class BotiquinActivity extends AppCompatActivity implements BotiquinAdapter.OnMedicamentoClickListener {
 
@@ -56,7 +57,8 @@ public class BotiquinActivity extends AppCompatActivity implements BotiquinAdapt
         fabNuevaMedicina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(BotiquinActivity.this, "Nueva Medicina - Próximamente", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(BotiquinActivity.this, NuevaMedicinaActivity.class);
+                startActivity(intent);
             }
         });
 
