@@ -4,13 +4,13 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.controlmedicamentos.myapplication.R;
 import com.controlmedicamentos.myapplication.models.Medicamento;
 import com.controlmedicamentos.myapplication.utils.DatosPrueba;
 import java.util.Calendar;
@@ -164,10 +164,15 @@ public class NuevaMedicinaActivity extends AppCompatActivity {
         int stockInicial = Integer.parseInt(etStockInicial.getText().toString());
         int diasTratamiento = Integer.parseInt(etDiasTratamiento.getText().toString());
 
+        // Generar ID único
+        String id = String.valueOf(System.currentTimeMillis());
+
         Medicamento medicamento = new Medicamento(
-                nombre, presentacion, tomasDiarias, horarioPrimeraToma,
-                afeccion, stockInicial, colorSeleccionado, diasTratamiento, detalles
+                id, nombre, presentacion, tomasDiarias, horarioPrimeraToma,
+                afeccion, stockInicial, colorSeleccionado, diasTratamiento
         );
+
+        medicamento.setDetalles(detalles);
 
         if (fechaVencimiento != null) {
             medicamento.setFechaVencimiento(fechaVencimiento.getTime());

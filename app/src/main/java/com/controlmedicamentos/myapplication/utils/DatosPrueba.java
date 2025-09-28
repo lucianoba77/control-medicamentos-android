@@ -1,6 +1,7 @@
 package com.controlmedicamentos.myapplication.utils;
 
 import android.content.Context;
+import com.controlmedicamentos.myapplication.R;
 import com.controlmedicamentos.myapplication.models.Medicamento;
 import java.util.ArrayList;
 import java.util.Calendar;

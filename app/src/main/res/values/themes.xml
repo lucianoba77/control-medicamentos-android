@@ -45,16 +45,6 @@
         <item name="cornerRadius">@dimen/card_corner_radius</item>
     </style>
 
-    <!-- Tema para tarjetas de medicamentos -->
-    <style name="MedicineCard" parent="Widget.Material3.CardView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/margin_medium</item>
-        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
-        <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="android:padding">@dimen/padding_medium</item>
-    </style>
-
     <!-- Tema para botones de navegación -->
     <style name="NavigationButton" parent="Widget.Material3.Button">
         <item name="android:layout_width">@dimen/nav_button_size</item>
@@ -65,7 +55,7 @@
         <item name="cornerRadius">@dimen/card_corner_radius</item>
     </style>
 
-    <!-- Tema para campos de formulario - CORREGIDO -->
+    <!-- Tema para campos de formulario -->
     <style name="FormField" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

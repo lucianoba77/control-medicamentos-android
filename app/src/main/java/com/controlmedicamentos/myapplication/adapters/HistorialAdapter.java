@@ -106,7 +106,7 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.Hist
             if (medicamento.estaVencido()) {
                 tvEstado.setText("Vencido");
                 tvEstado.setTextColor(context.getColor(R.color.error));
-            } else if (medicamento.estaPausado()) {
+            } else if (medicamento.isPausado()) {
                 tvEstado.setText("Completado");
                 tvEstado.setTextColor(context.getColor(R.color.success));
             } else {

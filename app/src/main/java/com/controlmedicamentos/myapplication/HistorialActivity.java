@@ -81,10 +81,11 @@ public class HistorialActivity extends AppCompatActivity {
         // Cargar estadísticas generales
         DatosPrueba.EstadisticasAdherencia estadisticas = DatosPrueba.obtenerEstadisticas(this);
         tvEstadisticasGenerales.setText(String.format(
-                "Adherencia General: %.1f%%\nTratamientos Activos: %d\nTratamientos Concluidos: %d",
-                estadisticas.adherenciaGeneral,
-                estadisticas.tratamientosActivos,
-                estadisticas.tratamientosConcluidos
+                "Adherencia General: %.1f%%\nMedicamentos Activos: %d\nMedicamentos Pausados: %d\nTotal Medicamentos: %d",
+                estadisticas.getPorcentajeAdherencia(),
+                estadisticas.medicamentosActivos,
+                estadisticas.medicamentosPausados,
+                estadisticas.totalMedicamentos
         ));
 
         // Cargar gráfico de adherencia por medicamento
@@ -97,12 +98,13 @@ public class HistorialActivity extends AppCompatActivity {
 
     private void cargarGraficoAdherencia() {
         List<Medicamento> medicamentos = DatosPrueba.obtenerMedicamentosPrueba(this);
+        DatosPrueba.EstadisticasAdherencia estadisticas = DatosPrueba.obtenerEstadisticas(this);
         List<BarEntry> entries = new ArrayList<>();
         List<String> labels = new ArrayList<>();
 
         for (int i = 0; i < medicamentos.size(); i++) {
             Medicamento medicamento = medicamentos.get(i);
-            float adherencia = calcularAdherencia(medicamento);
+            float adherencia = (float) estadisticas.getPorcentajeAdherencia();
             entries.add(new BarEntry(i, adherencia));
             labels.add(medicamento.getNombre());
         }
@@ -115,12 +117,6 @@ public class HistorialActivity extends AppCompatActivity {
         chartAdherencia.setData(barData);
         chartAdherencia.getXAxis().setValueFormatter(new IndexAxisValueFormatter(labels));
         chartAdherencia.invalidate();
-    }
-
-    private float calcularAdherencia(Medicamento medicamento) {
-        // Simulación de cálculo de adherencia
-        // En una implementación real, esto vendría de los datos de tomas
-        return (float) (Math.random() * 40 + 60); // Entre 60% y 100%
     }
 
     private void configurarListeners() {

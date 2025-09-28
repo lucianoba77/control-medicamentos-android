@@ -1,4 +1,4 @@
-ackage com.controlmedicamentos.myapplication.adapters;
+package com.controlmedicamentos.myapplication.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -93,7 +93,7 @@ public class BotiquinAdapter extends RecyclerView.Adapter<BotiquinAdapter.Botiqu
             tvPresentacion.setText(medicamento.getPresentacion());
 
             // Configurar stock
-            String stockText = medicamento.getStockInfo();
+            String stockText = "Stock: " + medicamento.getStockActual() + "/" + medicamento.getStockInicial();
             tvStock.setText(stockText);
 
             // Configurar estado
@@ -103,7 +103,7 @@ public class BotiquinAdapter extends RecyclerView.Adapter<BotiquinAdapter.Botiqu
                 btnEliminar.setVisibility(View.VISIBLE);
                 btnEditar.setVisibility(View.GONE);
                 btnAgregarStock.setVisibility(View.GONE);
-            } else if (medicamento.estaPausado()) {
+            } else if (medicamento.isPausado()) {
                 tvEstado.setText("Pausado");
                 tvEstado.setTextColor(context.getColor(R.color.warning));
                 btnEditar.setVisibility(View.VISIBLE);
