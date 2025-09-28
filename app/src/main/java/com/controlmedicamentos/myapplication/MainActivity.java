@@ -12,6 +12,7 @@ import com.controlmedicamentos.myapplication.adapters.MedicamentoAdapter;
 import com.controlmedicamentos.myapplication.models.Medicamento;
 import java.util.ArrayList;
 import java.util.List;
+import com.controlmedicamentos.myapplication.utils.DatosPrueba;
 
 public class MainActivity extends AppCompatActivity implements MedicamentoAdapter.OnMedicamentoClickListener {
 
@@ -57,34 +58,8 @@ public class MainActivity extends AppCompatActivity implements MedicamentoAdapte
     }
 
     private void cargarDatosPrueba() {
-        // Crear medicamentos de prueba
-        medicamentos.clear();
-
-        // Medicamento 1: Paracetamol
-        Medicamento paracetamol = new Medicamento(
-                "1", "Paracetamol 500mg", "Comprimidos", 3, "08:00",
-                "Dolor de cabeza", 30, getResources().getColor(R.color.medicamento_azul, null), 7
-        );
-        paracetamol.setDetalles("Tomar con agua");
-        medicamentos.add(paracetamol);
-
-        // Medicamento 2: Ibuprofeno
-        Medicamento ibuprofeno = new Medicamento(
-                "2", "Ibuprofeno 400mg", "Comprimidos", 2, "12:00",
-                "Inflamación", 20, getResources().getColor(R.color.medicamento_rojo, null), 5
-        );
-        ibuprofeno.setDetalles("Tomar con comida");
-        medicamentos.add(ibuprofeno);
-
-        // Medicamento 3: Jarabe
-        Medicamento jarabe = new Medicamento(
-                "3", "Jarabe para la tos", "Jarabe", 3, "09:00",
-                "Tos", 1, getResources().getColor(R.color.medicamento_verde, null), 10
-        );
-        jarabe.setDetalles("Agitar antes de usar");
-        medicamentos.add(jarabe);
-
-        // Actualizar RecyclerView
+        // Usar la clase DatosPrueba para obtener medicamentos de prueba
+        medicamentos = DatosPrueba.obtenerMedicamentosActivos(this);
         adapter.actualizarMedicamentos(medicamentos);
     }
 
@@ -144,12 +119,16 @@ public class MainActivity extends AppCompatActivity implements MedicamentoAdapte
         // Verificar si se completó el tratamiento
         if (medicamento.estaAgotado()) {
             Toast.makeText(this, "¡Tratamiento de " + medicamento.getNombre() + " completado!", Toast.LENGTH_LONG).show();
-            // Remover de la lista
-            medicamentos.remove(medicamento);
-            // Actualizar RecyclerView
-            adapter.actualizarMedicamentos(medicamentos);
+            // Pausar el medicamento
+            medicamento.pausarMedicamento();
+            // Actualizar en DatosPrueba
+            DatosPrueba.actualizarMedicamento(medicamento);
+            // Recargar datos
+            cargarDatosPrueba();
         } else {
-            // Solo actualizar el item específico
+            // Actualizar en DatosPrueba
+            DatosPrueba.actualizarMedicamento(medicamento);
+            // Actualizar RecyclerView
             adapter.notifyDataSetChanged();
         }
     }
